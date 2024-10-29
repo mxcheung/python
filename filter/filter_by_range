@@ -1,0 +1,14 @@
+def filter_by_status_range(items, min_status, max_status):
+    return [item for item in items if min_status <= item['status'] <= max_status]
+
+# Example usage
+items = [
+    {'id': 1, 'status': 200},
+    {'id': 2, 'status': 300},
+    {'id': 3, 'status': 404},
+    {'id': 4, 'status': 400},
+    {'id': 5, 'status': 500}
+]
+
+filtered_items = filter_by_status_range(items, 300, 500)
+print(filtered_items)
