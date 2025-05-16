@@ -1,4 +1,13 @@
+Why Predicates Are Better for Validation
+```
+| Reason                       | Explanation                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| ✅ **Reusability**            | Predicates can be reused across multiple parts of your app (e.g., form validation, API checks). |
+| ✅ **Testability**            | Easy to write unit tests for small, focused predicate functions.                                |
+| ✅ **Separation of concerns** | Keeps validation logic separate from control flow (like user interaction or logging).           |
+| ✅ **Composability**          | You can combine multiple predicates for more complex rules.                                     |
 
+```
 
  Example: Validation Using Predicate
 ```
