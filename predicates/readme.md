@@ -1,3 +1,6 @@
+For validation logic, you should generally use predicates — not raw if-else blocks — because predicates make your code more modular, reusable, and testable.
+
+
 Why Predicates Are Better for Validation
 ```
 | Reason                       | Explanation                                                                                     |
