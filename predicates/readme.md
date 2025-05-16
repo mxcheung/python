@@ -1,3 +1,13 @@
+In Python, a predicate is generally a function that returns a boolean value — True or False — based on some condition. Predicates are commonly used in filtering, conditional checks, and functional programming contexts like filter(), any(), all(), etc.
+
+Using Predicates in Functional Programming
+```
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = list(filter(is_even, numbers))
+print(even_numbers)  # [2, 4, 6]
+```
+ 
+ 
  Comparison Table
  ```
 | Feature      | Predicate                               | `if-else` Statement                        |
