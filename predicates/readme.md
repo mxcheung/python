@@ -1,3 +1,16 @@
+ Comparison Table
+ ```
+| Feature      | Predicate                               | `if-else` Statement                        |
+| ------------ | --------------------------------------- | ------------------------------------------ |
+| What it is   | A function returning `True` or `False`  | A control flow structure                   |
+| Purpose      | Encapsulate a condition                 | Choose between code blocks                 |
+| Return value | `True` or `False`                       | Executes one block, returns `None`         |
+| Use case     | Filtering, validation, condition checks | Branching logic based on a condition       |
+| Example      | `def is_valid(x): return x > 0`         | `if x > 0: print("Yes") else: print("No")` |
+
+```
+
+
 For validation logic, you should generally use predicates — not raw if-else blocks — because predicates make your code more modular, reusable, and testable.
 
 
