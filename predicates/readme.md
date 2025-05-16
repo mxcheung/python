@@ -6,6 +6,13 @@ numbers = [1, 2, 3, 4, 5, 6]
 even_numbers = list(filter(is_even, numbers))
 print(even_numbers)  # [2, 4, 6]
 ```
+
+✅ any() and all()
+```
+numbers = [2, 4, 6, 8]
+print(all(is_even(n) for n in numbers))  # True
+print(any(is_even(n) for n in [1, 3, 4]))  # True
+```
  
  
  Comparison Table
