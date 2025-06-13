@@ -21,7 +21,6 @@ def parse_iso15022_sender_receiver_lines(lines):
     return parsed_blocks
 
 def validate_iso15022_sender_receiver_lines(blocks, max_length=140):
-    valid = []
     errors = []
 
     for code, value in blocks:
@@ -33,10 +32,8 @@ def validate_iso15022_sender_receiver_lines(blocks, max_length=140):
                 "length": len(full_text),
                 "error": "Exceeds 140 character limit"
             })
-        else:
-            valid.append(full_text)
 
-    return valid, errors
+    return errors
 
 # Example input
 input_lines = [
@@ -50,13 +47,12 @@ input_lines = [
 
 # Run
 parsed = parse_iso15022_sender_receiver_lines(input_lines)
-valid_blocks, validation_errors = validate_iso15022_sender_receiver_lines(parsed)
+validation_errors = validate_iso15022_sender_receiver_lines(parsed)
 
 # Output
-print("✅ Valid Blocks:")
-for vb in valid_blocks:
-    print(vb)
-
-print("\n❌ Validation Errors:")
-for err in validation_errors:
-    print(f"{err['code']} ({err['length']} chars): {err['value']}")
+if validation_errors:
+    print("❌ Validation Errors:")
+    for err in validation_errors:
+        print(f"{err['code']} ({err['length']} chars): {err['value']}")
+else:
+    print("✅ All lines are within the 140 character limit.")
