@@ -58,4 +58,5 @@ for vb in valid_blocks:
     print(vb)
 
 print("\n❌ Validation Errors:")
-for
+for err in validation_errors:
+    print(f"{err['code']} ({err['length']} chars): {err['value']}")
