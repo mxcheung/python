@@ -9,6 +9,10 @@ sender receiver Line 2-6  (continuation of additional information) or (code)(nar
 
 For iso20022 
 
-Parse sender and receiver 
+Parse sender and receiver infomation 
 
     (code)(narrative + continuation of additional information)
+
+Validate parse sender and receiver infomation 
+
+    (code)(narrative + continuation of additional information) ensure does not exceed 140 char
