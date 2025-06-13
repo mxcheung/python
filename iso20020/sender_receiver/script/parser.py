@@ -8,55 +8,55 @@ def parse_iso15022_lines(lines):
     for line in lines:
         match = re.match(r"^(/[^/]+/)(.*)", line.strip())
         if match:
-            # New code segment found
             if current_code:
-                # Save the previous one
-                final_block = f"{current_code}{current_block.strip()}"
-                parsed_blocks.append(final_block)
-            current_code = match.group(1)  # e.g., "/BNF/"
+                parsed_blocks.append((current_code, current_block.strip()))
+            current_code = match.group(1)
             current_block = match.group(2).strip() + " "
         else:
-            # Continuation line
             current_block += line.strip() + " "
 
     if current_code:
-        final_block = f"{current_code}{current_block.strip()}"
-        parsed_blocks.append(final_block)
+        parsed_blocks.append((current_code, current_block.strip()))
 
     return parsed_blocks
 
 def validate_blocks(blocks, max_length=140):
+    valid = []
     errors = []
-    for i, block in enumerate(blocks):
-        if len(block) > max_length:
+
+    for code, value in blocks:
+        full_text = f"{code}{value}"
+        if len(full_text) > max_length:
             errors.append({
-                "index": i,
-                "block": block,
-                "length": len(block),
+                "code": code,
+                "value": full_text,
+                "length": len(full_text),
                 "error": "Exceeds 140 character limit"
             })
-    return errors
+        else:
+            valid.append(full_text)
 
-# Example usage
+    return valid, errors
+
+# Example input
 input_lines = [
     "/BNF/John Doe",
     "123 Street Name,",
-    "Melbourne VIC",
+    "Melbourne VIC, Australia. This address continues for a while just to simulate a long address field that may exceed character limits.",
     "/INS/ABC Bank",
     "456 Bank Road",
     "Sydney NSW"
 ]
 
+# Run
 parsed = parse_iso15022_lines(input_lines)
-errors = validate_blocks(parsed)
+valid_blocks, validation_errors = validate_blocks(parsed)
 
-print("Parsed Blocks:")
-for p in parsed:
-    print(p)
+# Output
+print("✅ Valid Blocks:")
+for vb in valid_blocks:
+    print(vb)
 
-if errors:
-    print("\nValidation Errors:")
-    for e in errors:
-        print(e)
-else:
-    print("\nAll blocks are within the 140 character limit.")
+print("\n❌ Validation Errors:")
+for err in validation_errors:
+    print(f"{err['code']} ({err['length']} chars): {err['value']}")
