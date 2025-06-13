@@ -8,5 +8,7 @@ sender receiver Line 1    (code)(narrative)
 sender receiver Line 2-6  (continuation of additional information) or (code)(narrative)
 
 For iso20022 
+
 Parse sender and receiver 
- (code)(narrative + continuation of additional information)
+
+    (code)(narrative + continuation of additional information)
