@@ -70,3 +70,6 @@ data = {
 filtered = {k: v for k, v in data.items() if len(v) > 140}
 
 print(filtered)
+
+error_list = [f'{code} exceeds max length {value}' for code, value in error_codes.items()]
+
