@@ -20,7 +20,7 @@ def parse_iso15022_sender_receiver_lines(lines):
 
     return parsed_blocks
 
-def validate_blocks(blocks, max_length=140):
+def validate_iso15022_sender_receiver_lines(blocks, max_length=140):
     valid = []
     errors = []
 
@@ -50,7 +50,7 @@ input_lines = [
 
 # Run
 parsed = parse_iso15022_sender_receiver_lines(input_lines)
-valid_blocks, validation_errors = validate_blocks(parsed)
+valid_blocks, validation_errors = validate_iso15022_sender_receiver_lines(parsed)
 
 # Output
 print("✅ Valid Blocks:")
