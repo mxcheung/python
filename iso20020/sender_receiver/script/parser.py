@@ -1,6 +1,6 @@
 import re
 
-def parse_iso15022_lines(lines):
+def parse_iso15022_sender_receiver_lines(lines):
     parsed_blocks = []
     current_code = None
     current_block = ""
@@ -49,7 +49,7 @@ input_lines = [
 ]
 
 # Run
-parsed = parse_iso15022_lines(input_lines)
+parsed = parse_iso15022_sender_receiver_lines(input_lines)
 valid_blocks, validation_errors = validate_blocks(parsed)
 
 # Output
@@ -58,5 +58,4 @@ for vb in valid_blocks:
     print(vb)
 
 print("\n❌ Validation Errors:")
-for err in validation_errors:
-    print(f"{err['code']} ({err['length']} chars): {err['value']}")
+for
