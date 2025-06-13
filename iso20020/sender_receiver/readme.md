@@ -16,3 +16,28 @@ Parse sender and receiver infomation
 Validate parse sender and receiver infomation 
 
     (code)(narrative + continuation of additional information) ensure does not exceed 140 char
+
+🧾 Background Summary
+ISO 15022 (MT Format):
+
+Line 1: Starts with a code (e.g., /ACC/, /BNF/, /INS/) followed by narrative.
+
+Line 2–6: May contain continuation of the narrative or additional code+narrative pairs.
+
+ISO 20022 (XML-based):
+
+Consolidates information into structured elements with clear tags like <Pty>, <Id>, <Nm>, <PstlAdr>, etc.
+
+The goal is to preserve the meaning while flattening multi-line input and ensuring field length limits, e.g., max 140 characters.
+
+
+✅ Goal
+Parse:
+
+Join sender/receiver lines into a single string per block.
+
+Preserve the original code (e.g., /BNF/) and concatenate the narrative and continuation lines.
+
+Validate:
+
+Ensure that each final string does not exceed 140 characters.
