@@ -18,7 +18,16 @@ def get_test_filenames():
         f for f in os.listdir(DATA_DIR)
         if os.path.isfile(os.path.join(DATA_DIR, f))
     ]
-    
+
+# Return list of (filename, full_path)
+def get_test_files():
+    return [
+        (f, os.path.join(DATA_DIR, f))
+        for f in os.listdir(DATA_DIR)
+        if os.path.isfile(os.path.join(DATA_DIR, f))
+    ]
+
+
 @pytest.mark.parametrize("file_path", get_test_files())
 def test_load_each_file_as_bytes(file_path):
     content = load_file_as_bytes(file_path)
