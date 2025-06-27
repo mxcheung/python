@@ -1,0 +1,6 @@
+app:
+  name: my-ecs-app
+  environment: dev
+  regions:
+    - ap-southeast-2
+    - us-west-1
