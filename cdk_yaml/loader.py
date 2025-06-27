@@ -28,5 +28,7 @@ with open("config.yaml") as f:
 
 config = from_dict(Config, raw)
 
-print(config.app.name)            # my-ecs-app
-print(config.app.environments)   # ['dev', 'test', 'prod']
+
+print(config.app.name)              # my-ecs-app
+print(config.app.environment)       # Environment.DEV
+print(config.app.environment.value) # dev
