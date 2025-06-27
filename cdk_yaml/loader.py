@@ -1,3 +1,9 @@
+def parse_enum(enum_class, value):
+    try:
+        return enum_class(value)
+    except ValueError:
+        raise ValueError(f"Invalid value '{value}' for enum {enum_class.__name__}")
+
 def from_dict(data_class, data):
     from dataclasses import fields, is_dataclass
     kwargs = {}
