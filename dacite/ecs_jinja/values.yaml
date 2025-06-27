@@ -1,0 +1,5 @@
+app:
+  name: my-ecs-app
+  environment: dev
+  cluster: my-cluster
+  container: my-container
