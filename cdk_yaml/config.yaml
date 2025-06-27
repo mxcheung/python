@@ -1,0 +1,6 @@
+app:
+  name: my-ecs-app
+  environments:
+    - dev
+    - test
+    - prod
