@@ -1,0 +1,9 @@
+Resources:
+  MyEcsService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: {{ app.cluster }}
+      ServiceName: {{ app.name }}-service
+      LaunchType: FARGATE
+      TaskDefinition: !Ref TaskDef
+      DesiredCount: 2
