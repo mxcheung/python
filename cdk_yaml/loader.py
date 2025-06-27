@@ -1,19 +1,20 @@
 def from_dict(data_class, data):
-    """Recursively convert a dictionary to a dataclass"""
     from dataclasses import fields, is_dataclass
-
-    if not is_dataclass(data_class):
-        return data
-
     kwargs = {}
-    for f in fields(data_class):
-        value = data.get(f.name)
-        if value is not None:
-            if isinstance(f.type, type) and issubclass(f.type, list):
-                kwargs[f.name] = value
-            else:
-                kwargs[f.name] = from_dict(f.type, value)
+
+    for field in fields(data_class):
+        value = data.get(field.name)
+        field_type = field.type
+
+        if isinstance(value, dict) and is_dataclass(field_type):
+            kwargs[field.name] = from_dict(field_type, value)
+        elif isinstance(field_type, type) and issubclass(field_type, Enum):
+            kwargs[field.name] = parse_enum(field_type, value)
+        else:
+            kwargs[field.name] = value
+
     return data_class(**kwargs)
+
 
 # Load the YAML file
 with open("config.yaml") as f:
