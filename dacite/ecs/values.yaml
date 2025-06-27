@@ -1,0 +1,10 @@
+app:
+  name: my-ecs-app
+  repo_name: my-codecommit-repo
+  branch: main
+  environment: dev
+  cluster_name: my-cluster
+  service_name: my-service
+  container_name: my-container
+  region: ap-southeast-2
+  account_id: 123456789012
