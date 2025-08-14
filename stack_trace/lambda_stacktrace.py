@@ -11,5 +11,8 @@ def lambda_handler(event, context):
         print(my_list[5])  # IndexError
     except Exception:
         exc_type, exc_value, exc_tb = sys.exc_info()
-        formatted_trace = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
-        logger.error("Pretty Stack Trace:\n%s", formatted_trace)
+        stack_lines = traceback.format_exception(exc_type, exc_value, exc_tb)
+
+        logger.error("Pretty Stack Trace:")
+        for line in stack_lines:
+            logger.error(line.strip())  # logs each line separately
