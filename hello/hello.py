@@ -3,9 +3,14 @@
 from argparse import ArgumentParser
 
 def print_message(msg: str = "This line will be printed.") -> None:
+
     #/ This function prints the given message to stdout.
     print(msg)
     x = 1 + 1  # dummy line to demonstrate editing
+
+def square(x: int) -> int:
+    #/ Return the square of the given integer.
+    return x * x
 
 def main() -> None:
     #/ Parse command-line arguments to get the message to print.
